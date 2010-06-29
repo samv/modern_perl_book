@@ -161,7 +161,7 @@ To define object attributes, describe them as part of the class:
 
         use Moose;
 
-        B<< has 'name', is => 'ro', isa => 'Str'; >>
+        B<< has 'name' =E<gt> (is => 'ro', isa => 'Str'); >>
     }
 
 =end programlisting
@@ -195,8 +195,8 @@ the verification and validation for you:
 
         use Moose;
 
-        has 'name', is => 'ro', isa => 'Str';
-        B<< has 'age',  is => 'ro'; >>
+        has 'name' => (is => 'ro', isa => 'Str');
+        B<< has 'age'  => (is => 'ro'); >>
     }
 
     my $invalid = Cat->new( name => 'bizarre', age => 'purple' );
@@ -225,9 +225,9 @@ of an attribute:
 
         use Moose;
 
-        has 'name', is => 'ro', isa => 'Str';
-        has 'age',  is => 'ro', isa => 'Int';
-        B<< has 'diet', is => 'rw'; >>
+        has 'name' => (is => 'ro', isa => 'Str');
+        has 'age'  => (is => 'ro', isa => 'Int');
+        B<< has 'diet' => (is => 'rw'); >>
     }
 
     my $fat = Cat->new( name => 'Fatty', age => 8, diet => 'Sea Treats' );
@@ -289,9 +289,9 @@ birth:
 
     use Moose;
 
-    has 'name',        is => 'ro', isa => 'Str';
-    has 'diet',        is => 'rw';
-    B<< has 'birth_year',  is => 'ro', isa => 'Int'; >>
+    has 'name' => (is => 'ro', isa => 'Str');
+    has 'diet' => (is => 'rw');
+    B<< has 'birth_year' => (is => 'ro', isa => 'Int'); >>
 
     B<sub age>
     B<{>
@@ -330,8 +330,8 @@ object:
 
     use Moose;
 
-    has 'name',        is => 'ro', isa => 'Str';
-    has 'diet',        is => 'rw', isa => 'Str';
+    has 'name' => (is => 'ro', isa => 'Str');
+    has 'diet' => (is => 'rw', isa => 'Str');
     B<< has 'birth_year',  is => 'ro', isa => 'Int', >>
                        B<< default => sub { (localtime)[5] + 1900 }; >>
 
@@ -495,10 +495,10 @@ explicitly mark that it performs the role:
 
     use Moose;
 
-    has 'name',        is => 'ro', isa => 'Str';
-    has 'diet',        is => 'rw', isa => 'Str';
-    has 'birth_year',  is => 'ro', isa => 'Int',
-                       default => (localtime)[5] + 1900;
+    has 'name' => (is => 'ro', isa => 'Str');
+    has 'diet' => (is => 'rw', isa => 'Str');
+    has 'birth_year' => ( is => 'ro', isa => 'Int',
+                          default => (localtime)[5] + 1900 );
 
     B<with 'LivingBeing';>
 
@@ -543,8 +543,8 @@ role:
     {
         package CalculateAgeFromBirthYear;
 
-        has 'birth_year', is => 'ro', isa => 'Int',
-                          default => sub { (localtime)[5] + 1900 };
+        has 'birth_year', (is => 'ro', isa => 'Int',
+                           default => sub { (localtime)[5] + 1900 });
 
         sub age
         {
@@ -566,8 +566,8 @@ available to other classes.  Now C<Cat> can perform both roles:
 
     use Moose;
 
-    has 'name', is => 'ro', isa => 'Str';
-    has 'diet', is => 'rw';
+    has 'name' => (is => 'ro', isa => 'Str');
+    has 'diet' => (is => 'rw');
 
     B<with 'LivingBeing', 'CalculateAgeFromBirthYear';>
 
@@ -619,10 +619,10 @@ Consider a C<LightSource> class which provides two public attributes
 
         use Moose;
 
-        has 'candle_power', is      => 'ro', isa     => 'Int',
-                            default => 1;
-        has 'enabled',      is      => 'ro', isa     => 'Bool',
-                            default => 0,    _writer => '_set_enabled';
+        has 'candle_power' => (is      => 'ro', isa     => 'Int',
+                               default => 1);
+        has 'enabled'      => (is      => 'ro', isa     => 'Bool',
+                               default => 0,    _writer => '_set_enabled');
 
         sub light
         {
@@ -661,7 +661,7 @@ of light:
 
         B<extends 'LightSource'>;
 
-        has 'B<+>candle_power', default => 100;
+        has 'B<+>candle_power' => (default => 100);
     }
 
 =end programlisting
@@ -860,8 +860,8 @@ This is valid Perl 5 code:
 
     B<role> CalculateAgeFromBirthYear
     {
-        has 'birth_year', is => 'ro', isa => 'Int',
-                          default => sub { (localtime)[5] + 1900 };
+        has 'birth_year' => (is => 'ro', isa => 'Int',
+                             default => sub { (localtime)[5] + 1900 });
 
         B<method> age
         {
@@ -871,8 +871,8 @@ This is valid Perl 5 code:
 
     B<class Cat with LivingBeing with CalculateAgeFromBirthYear>
     {
-        has 'name', is => 'ro', isa => 'Str';
-        has 'diet', is => 'rw';
+        has 'name' => (is => 'ro', isa => 'Str');
+        has 'diet' => (is => 'rw');
     }
 
 =end programlisting
