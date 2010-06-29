@@ -38,7 +38,7 @@ X<arguments; named>
 X<signatures>
 X<MooseX::MultiMethods>
 
-Without a module such as C<signatures> or C<MooseX::Multimethods>, Perl 5's
+Without a module such as C<signatures>, C<MooseX::Method::Signatures> or C<MooseX::Multimethods>, Perl 5's
 argument passing mechanism is simple: all arguments flatten into a single list
 accessible through C<@_> (L<function_parameters>).  While this simplicity is
 occasionally too simple--named parameters can be very useful at times--it does
