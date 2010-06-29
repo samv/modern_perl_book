@@ -469,6 +469,23 @@ and a preferred C<diet()>--and C<Cheese>--which can C<age()> in storage--may be
 that the C<Animal> performs a C<LivingBeing> role, while the C<Cheese> performs
 a C<Storable> role.
 
+=for author
+
+These examples are all very cute, but I wonder if it risks turning the
+text into something of an academic exercise.  This may have been
+suitable for the Exegeses and Synopses, but I don't think I'm alone in
+tiring of seeing them used as examples.  Readers might read it, feel
+they understand it, but without practical relevance it could very
+easily disappear out their noggin again.
+
+By now there are lots of CPAN modules which serve as very good
+examples roles in real use.  Can I suggest replacing one example with,
+say, C<MooseX::Getopt> and seeing if that improves the quality of the
+text.  C<MooseX::Getopt> is also useful, because it is a good example
+of use of attribute traits aka "metaclass metaroles".
+
+=end
+
 While you I<could> check that every object passed into C<show_vital_stats()> is
 an instance of C<Animal>, you lose some genericity that way.  Instead, check
 that the object I<performs> the C<LivingBeing> role:
