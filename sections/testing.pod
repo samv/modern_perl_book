@@ -358,8 +358,12 @@ other.  This is an excellent way to reduce duplication in test suites.  See the
 C<Test::Class> series written by Curtis Poe at
 U<http://www.modernperlbooks.com/mt/2009/03/organizing-test-suites-with-testclass.html>.
 
+=item * C<Test::Perl::Critic> is an example of a module which allows tests of the coding style of your code, not just the functionality, to help ensure consistency and hence, maintainability of your code.
+
 =back
 
 The Perl QA project (U<http://qa.perl.org/>) is a primary source of test
 modules as well as wisdom and practical experience making testing in Perl easy
 and effective.
+
+=head
